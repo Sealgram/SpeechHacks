@@ -3,7 +3,7 @@ Speech.py: tasks for SpeechHacks hackathon project
 mostly done by Jimmy
 """
 
-import requests
+import requests, os
 from vault import keys
 import ytmp3 as con
 
@@ -38,6 +38,7 @@ def uploadLocalTranscript(filename):
                             data=read_file(filename))
     #print(response.json())
     url = response.json()
+    os.remove(filename)
     return url["upload_url"]
 
 
