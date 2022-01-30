@@ -25,39 +25,8 @@ router.get('/home', function(req, res, next){
   res.render('home');
 });
 
-
-
-
-
-router.post('/uploadAudio', upload.single('soundBlob'), async function (req, res, next) {
-  // console.log(req.file); // see what got uploaded
-
-  let uploadLocation = __dirname + '../temp/' + req.audio // where to save the file to. make sure the incoming name has a .wav extension
-
-  var form = new formidable.IncomingForm();
-        form.parse(req, function (err, fields, files) {
-            // oldpath : temporary folder to which file is saved to
-            var oldpath = files.filetoupload.path;
-            var newpath = upload_path + files.filetoupload.name;
-            // copy the file to a new location
-            fs.rename(oldpath, newpath, function (err) {
-                if (err) throw err;
-                // you may respond with another html page
-                res.write('File uploaded and moved!');
-                res.end();
-            });
-        });
-
-  /*
-  async function uploadFile(){
-    await gc.bucket('audiofsls').upload((__driname + `../temp/${req.audio.originalname}`), {
-      destination: "test.mp3",
-    });
-    console.log(`$File uploaded to Bucket`);
-    }
-  uploadFile().catch(console.error);
-  */
+router.post('/youtubeUpload', function(req, res, next){
+  var youtubeLink = req.
 })
-
 
 module.exports = router;
