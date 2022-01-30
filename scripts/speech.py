@@ -35,7 +35,6 @@ def uploadLocalTranscript(filename):
     response = requests.post('https://api.assemblyai.com/v2/upload',
                             headers=headers,
                             data=read_file(filename))
-    # print(response.json())
     url = response.json()
     os.remove(filename)
     return url["upload_url"]
@@ -45,7 +44,7 @@ def uploadFileForTranscript(url):
     endpoint = "https://api.assemblyai.com/v2/transcript"
     json = { 
         "audio_url": url,
-        "iab_categories": True
+        "speaker_labels": True
         }
     headers = {
         "authorization": keys.authkey,
@@ -64,18 +63,14 @@ def uploadFileForTranscript(url):
 
 def getTranscription(transcriptID):
     endpoint = "https://api.assemblyai.com/v2/transcript/" + transcriptID
-    # print(endpoint)
     headers = {
         "authorization": keys.authkey,
     }
     responsed = requests.get(endpoint, headers=headers)
-    # print(responsed.json())
     responseDict = responsed.json()
     # print(responseDict['status'])
-
     while (responseDict['status'] == 'processing' or responseDict['status'] == 'queued'):
         responsed = requests.get(endpoint, headers=headers)
-        # print(responsed.json())
         responseDict = responsed.json()
         # print(responseDict['status'])
     # print(responseDict)
@@ -86,12 +81,15 @@ def getTranscription(transcriptID):
 
 def main():
     args = sys.argv[1:]
-    if len(sys.argv) != 2:
-        print("Usage: speech.py [YouTube link]")
-        exit(1)
+    # if len(sys.argv) != 2:
+        # print("Usage: speech.py [YouTube link]")
+        # exit(1)
     filename = youtubeConvert(sys.argv[1])
+    print("is this skipped")
     script = fullTranscript(filename)
+    print("before")
     print(script)
+    print("after")
     sys.stdout.flush()
 
 
