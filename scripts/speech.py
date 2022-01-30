@@ -4,7 +4,7 @@ Authors: Jimmy Lu, Liam Seagram
 """
 
 import requests, os
-from vault import keys
+from scripts.vault import keys
 import ytmp3 as con
 
 
@@ -118,5 +118,6 @@ if __name__ == "__main__":
     print(filename)
     script = fullTranscript(filename)
     for x in script:
+        print("\n\n\n\n\n\n\n")
         print(script)
     # countWords(script)
