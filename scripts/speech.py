@@ -24,7 +24,6 @@ def onlineTransfer(url):
 
 
 def uploadLocalTranscript(filename):
-    #filename = "male.wav"
     def read_file(filename, chunk_size=5242880):
      with open(filename, 'rb') as _file:
             while True:
@@ -36,7 +35,7 @@ def uploadLocalTranscript(filename):
     response = requests.post('https://api.assemblyai.com/v2/upload',
                             headers=headers,
                             data=read_file(filename))
-    #print(response.json())
+    # print(response.json())
     url = response.json()
     os.remove(filename)
     return url["upload_url"]
@@ -44,7 +43,10 @@ def uploadLocalTranscript(filename):
 
 def uploadFileForTranscript(url):
     endpoint = "https://api.assemblyai.com/v2/transcript"
-    json = { "audio_url": url}
+    json = { 
+        "audio_url": url,
+        "iab_categories": True
+        }
     headers = {
         "authorization": keys.authkey,
         "content-type": "application/json"
@@ -53,9 +55,9 @@ def uploadFileForTranscript(url):
 
     dictTest = response.json()
 
-    print(dictTest)
-    #print(response.json("id"))
-    #os.system('pause')
+    # print(dictTest)
+    # print(response.json("id"))
+    # os.system('pause')
     transcriptID = dictTest["id"]
     return transcriptID
 
@@ -67,21 +69,21 @@ def getTranscription(transcriptID):
         "authorization": keys.authkey,
     }
     responsed = requests.get(endpoint, headers=headers)
-    #print(responsed.json())
+    # print(responsed.json())
     responseDict = responsed.json()
-    #print(responseDict['status'])
+    # print(responseDict['status'])
 
     while (responseDict['status'] == 'processing' or responseDict['status'] == 'queued'):
-        #print('did this run')
+        # print('did this run')
         responsed = requests.get(endpoint, headers=headers)
-        #print(responsed.json())
+        # print(responsed.json())
         responseDict = responsed.json()
         print(responseDict['status'])
     # print("   ")
     # print(responseDict)
     # print("    ")
     # print(responseDict['text'])
-    return responseDict['text']
+    return (responseDict['text'], (responseDict['iab_categories_result']))
 
 
 def countWords(stringg):
@@ -115,5 +117,6 @@ if __name__ == "__main__":
     filename = youtubeConvert("https://www.youtube.com/watch?v=oP6x1Bd8t-Q")
     print(filename)
     script = fullTranscript(filename)
-    print(script)
-    countWords(script)
+    for x in script:
+        print(script)
+    # countWords(script)
