@@ -3,7 +3,7 @@ Speech.py: tasks for SpeechHacks hackathon project
 Authors: Jimmy Lu, Liam Seagram
 """
 
-import requests, os
+import requests, os, sys
 from vault import keys
 import ytmp3 as con
 
@@ -25,7 +25,7 @@ def onlineTransfer(url):
 
 def uploadLocalTranscript(filename):
     def read_file(filename, chunk_size=5242880):
-     with open(filename, 'rb') as _file:
+        with open(filename, 'rb') as _file:
             while True:
                 data = _file.read(chunk_size)
                 if not data:
@@ -64,7 +64,7 @@ def uploadFileForTranscript(url):
 
 def getTranscription(transcriptID):
     endpoint = "https://api.assemblyai.com/v2/transcript/" + transcriptID
-    print(endpoint)
+    # print(endpoint)
     headers = {
         "authorization": keys.authkey,
     }
@@ -74,16 +74,14 @@ def getTranscription(transcriptID):
     # print(responseDict['status'])
 
     while (responseDict['status'] == 'processing' or responseDict['status'] == 'queued'):
-        # print('did this run')
         responsed = requests.get(endpoint, headers=headers)
         # print(responsed.json())
         responseDict = responsed.json()
-        print(responseDict['status'])
-    # print("   ")
+        # print(responseDict['status'])
     # print(responseDict)
-    # print("    ")
     # print(responseDict['text'])
-    return (responseDict['text'], (responseDict['iab_categories_result']))
+    # print responseDict['iab_categories_result']
+    return (responseDict['text'])
 
 
 def countWords(stringg):
@@ -113,11 +111,22 @@ def countWords(stringg):
     return dict   
 
 
-if __name__ == "__main__":
-    filename = youtubeConvert("https://www.youtube.com/watch?v=oP6x1Bd8t-Q")
-    print(filename)
+def main():
+    args = sys.argv[1:]
+    if len(sys.argv) != 2:
+        print("Usage: speech.py [youtube link]")
+        exit(1)
+    filename = youtubeConvert(sys.argv[1])
     script = fullTranscript(filename)
-    for x in script:
-        print("\n\n\n\n\n\n\n")
-        print(x)
+    print(script)
+
+
+if __name__ == "__main__":
+    main()
+    # filename = youtubeConvert("https://www.youtube.com/watch?v=oP6x1Bd8t-Q")
+    # print(filename)
+    # script = fullTranscript(filename)
+    # for x in script:
+    #     print("\n\n\n\n\n\n\n")
+    #     print(x)
     # countWords(script)
