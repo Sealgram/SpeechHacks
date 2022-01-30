@@ -92,6 +92,7 @@ def main():
     filename = youtubeConvert(sys.argv[1])
     script = fullTranscript(filename)
     print(script)
+    sys.stdout.flush()
 
 
 if __name__ == "__main__":

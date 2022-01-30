@@ -26,7 +26,13 @@ router.get('/home', function(req, res, next){
 });
 
 router.post('/youtubeUpload', function(req, res, next){
-  var youtubeLink = req.
+  var youtubeLink = req.youtube;
+  const spawn = require("child_process").spawn;
+  const pythonProcess = spawn('python',["../scripts/speech.py", youtubeLink]);
+  pythonProcess.stdout.on('data', (data) => {
+    res.send(data)
+  });
+  
 })
 
 module.exports = router;
