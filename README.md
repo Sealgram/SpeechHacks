@@ -17,7 +17,7 @@ Next, you will need to install the nltk librairy to make the summarizer work. He
 pip install nltk
 ```
 Once that is done, run these two commands consecutively in python 3:
-```
+```python
 import nltk
 nltk.download()
 ```
