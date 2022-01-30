@@ -1,4 +1,5 @@
 from pytube import YouTube
+import sys, os
 
 
 def filter_name(name):
@@ -7,12 +8,24 @@ def filter_name(name):
     
 
 def download_video(link):
-    yt = YouTube(link)
-    stream = yt.streams.filter(only_audio=True)[0]
-    title = filter_name(yt.title)
-    stream.download(None, title)
-    return title
+    try:
+        yt = YouTube(link)
+    except:
+        print("\nThat is an invalid youtube link.")
+        exit(1)
+    else:
+        stream = yt.streams.filter(only_audio=True)[0]
+        title = filter_name(yt.title)
+        stream.download(None, title)
+        return title
 
+
+def main():
+    args = sys.argv[1:]
+    if len(sys.argv) != 2:
+        print("Usage: ytmp3.py [YouTube link]")
+        exit(1)
+    download_video(sys.argv[1])
 
 if __name__ == "__main__":
-    download_video("https://www.youtube.com/watch?v=MpybogxYGsI")
+    main()
