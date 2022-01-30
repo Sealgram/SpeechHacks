@@ -80,7 +80,6 @@ def getTranscription(transcriptID):
 
 
 def main():
-    args = sys.argv[1:]
     if len(sys.argv) != 2:
         print("Usage: speech.py [YouTube link]")
         exit(1)
