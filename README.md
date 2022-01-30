@@ -5,7 +5,7 @@ QHacks 2022 Project- Liam Seagram, Jimmy Lu, Nolan Hepworth, Taylor Fiorelli
 Using AssemblyAPI to perform text-to-speech and analyze the result.
 
 ## Dependencies
-To run the python code, here are the required installs:
+To run the python code located in the scripts folder, here are the required installs:
 ```
 pip install requests
 ```
