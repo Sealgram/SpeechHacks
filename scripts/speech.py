@@ -84,37 +84,10 @@ def getTranscription(transcriptID):
     return (responseDict['text'])
 
 
-def countWords(stringg):
-    dict = {}
-    currentWord = ''
-
-    for currentLetter in range(len(stringg)):
-        if stringg[currentLetter].isalpha() or stringg[currentLetter] == "'":
-            currentWord += stringg[currentLetter]
-        else:
-            if len(currentWord) > 0:
-                "".join(currentWord)
-                print(currentWord)
-                if currentWord in dict:
-                    dict[currentWord] += 1
-                else:
-                    dict[currentWord] = 1
-                currentWord = ''
-    if len(currentWord) > 0:
-        "".join(currentWord)
-        print(currentWord)
-        if currentWord in dict:
-            dict[currentWord] += 1
-        else:
-            dict[currentWord] = 1
-            
-    return dict   
-
-
 def main():
     args = sys.argv[1:]
     if len(sys.argv) != 2:
-        print("Usage: speech.py [youtube link]")
+        print("Usage: speech.py [YouTube link]")
         exit(1)
     filename = youtubeConvert(sys.argv[1])
     script = fullTranscript(filename)
@@ -124,10 +97,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # filename = youtubeConvert("https://www.youtube.com/watch?v=oP6x1Bd8t-Q")
-    # print(filename)
-    # script = fullTranscript(filename)
-    # for x in script:
-    #     print("\n\n\n\n\n\n\n")
-    #     print(x)
-    # countWords(script)
