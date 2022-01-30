@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>RecapHacks</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6,button {font-family: "helvetica", sans-serif}
+.w3-bar,h1 {font-family: "helvetica-bold", sans-serif}
+html, body {
+    margin: 0;
+    height: 100%;
+}
+</style>
+<body>
+
+<!-- Header -->
+<header class="w3-container w3-indigo w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-jumbo">RecapHacks</h1>
+  <form action='/youtubeUpload' action='POST'>
+    <input type="text" id="youtube" name="youtube" value="Input YouTube Link"><br>
+    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top" value='submit'>Transcribe!</button>
+  </form>
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-pale-yellow w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <!--<h1>Lorem Ipsum</h1>-->
+      <h5 class="w3-padding-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h5>
+
+      <!--<p class="w3-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat.</p>-->
+    </div>
+  </div>
+</div>
+
+<!-- Second Grid -->
+<div class="w3-container w3-pale-red w3-center w3-padding-64">
+    <h1 class="w3-margin w3-xlarge">Made At QHacks 2022</h1>
+</div>
+
+</body>
+</html>
+
+
+<!--<html>
+  <head>
+    <title>Speach Hacks</title>
+    <script src="//www.WebRTC-Experiment.com/RecordRTC.js"></script>
+  </head> 
+
+  <body>
+    <h1>Speach Hacks</h1>
+    <p>
+      <br>
+      Transription Trancended
+    </p>
+    <h2>Upload a File</h2>
+  <!--
+    <input type="file" accept="audio/*" capture id="recorder">
+    <audio id="player" controls></audio>
+    <script>
+    const recorder = document.getElementById('recorder');
+    const player = document.getElementById('player');
+
+    recorder.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    const url = URL.createObjectURL(file);
+    // Do something with the audio file.
+    player.src = url;
+    
+    });
+
+</script>
+<form action="/uploadAudio" method='POST'>
+  <input type="file" id="audio" name="audio">
+  <input type="submit">
+</form>
+<br>
+  <h2>c
+    Record Your Own Audio
+  </h2>
+  <p>
+    <button type="button" id="record">Record</button>
+    <button type="button" id="stopRecord" disabled>Stop</button>
+  </p>
+  <p>
+    <audio id=recordedAudio></audio>        
+  </p>
+
+  <script> 
+    navigator.mediaDevices.getUserMedia({audio:true})
+    .then(stream => {handlerFunction(stream)})
+
+    function handlerFunction(stream) {
+      rec = new MediaRecorder(stream);
+      rec.ondataavailable = e => {
+        audioChunks.push(e.data);
+        if (rec.state == "inactive"){
+          let blob = new Blob(audioChunks,{type:'audio/mp3'});
+          recordedAudio.src = URL.createObjectURL(blob);
+          recordedAudio.controls=true;
+          recordedAudio.autoplay=true;
+          sendData(blob)
+          }
+        }
+      }
+    
+    function sendData(data) {}
+      record.onclick = e => {
+        record.disabled = true;
+        record.style.backgroundColor = "green"
+        stopRecord.disabled=false;
+        audioChunks = [];
+        rec.start();
+        }
+      stopRecord.onclick = e => {
+        record.disabled = false;
+        stop.disabled=true;
+        record.style.backgroundColor = "red"
+        rec.stop();
+        }
+  </script>
+  </body>
+
+</html>
+-->
