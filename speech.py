@@ -1,6 +1,6 @@
 """
 Speech.py: tasks for SpeechHacks hackathon project
-mostly done by Jimmy
+Authors: Jimmy Lu, Liam Seagram
 """
 
 import requests, os
