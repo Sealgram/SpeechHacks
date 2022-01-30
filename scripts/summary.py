@@ -79,7 +79,6 @@ def finalFunction(sumSen):
     sentenceScores = scoreSentences(sentences, freqTable)
     threshold = findAverageScore(sentenceScores)
     summary = generateSummary(sentences, sentenceScores, 1.4 *threshold)
-    print(f"\n\n{summary}\n")
     return summary
 
 def main():
@@ -88,7 +87,7 @@ def main():
         print("Usage: summary.py [Text to summarize]")
         exit(1)
     sumSen = sys.argv[1]
-    finalFunction(sumSen)
+    print(finalFunction(sumSen))
 
 
 if __name__ == "__main__":

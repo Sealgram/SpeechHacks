@@ -43,8 +43,7 @@ def uploadLocalTranscript(filename):
 def uploadFileForTranscript(url):
     endpoint = "https://api.assemblyai.com/v2/transcript"
     json = { 
-        "audio_url": url,
-        "speaker_labels": True
+        "audio_url": url
         }
     headers = {
         "authorization": keys.authkey,
@@ -64,7 +63,7 @@ def uploadFileForTranscript(url):
 def getTranscription(transcriptID):
     endpoint = "https://api.assemblyai.com/v2/transcript/" + transcriptID
     headers = {
-        "authorization": keys.authkey,
+        "authorization": keys.authkey
     }
     responsed = requests.get(endpoint, headers=headers)
     responseDict = responsed.json()
