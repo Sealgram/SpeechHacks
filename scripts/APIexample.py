@@ -1,5 +1,5 @@
 import requests
-from scripts.vault import keys
+from vault import keys
 endpoint = "https://api.assemblyai.com/v2/transcript"
 json = {
     "audio_url": "https://bit.ly/3yxKEIY"
