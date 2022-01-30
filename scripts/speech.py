@@ -81,15 +81,12 @@ def getTranscription(transcriptID):
 
 def main():
     args = sys.argv[1:]
-    # if len(sys.argv) != 2:
-        # print("Usage: speech.py [YouTube link]")
-        # exit(1)
+    if len(sys.argv) != 2:
+        print("Usage: speech.py [YouTube link]")
+        exit(1)
     filename = youtubeConvert(sys.argv[1])
-    print("is this skipped")
     script = fullTranscript(filename)
-    print("before")
     print(script)
-    print("after")
     sys.stdout.flush()
 
 
